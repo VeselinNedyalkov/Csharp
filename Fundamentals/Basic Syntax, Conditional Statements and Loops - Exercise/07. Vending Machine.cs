@@ -64,7 +64,7 @@ namespace _07.VendingMachine
                 {
                     Console.WriteLine("Sorry, not enough money");
                 }
-                check = true;
+                
                 orderMoney = 0;
                 order = Console.ReadLine();
             }//while cicle for orders
