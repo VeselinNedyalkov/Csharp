@@ -15,9 +15,8 @@ namespace Methods___Exercise
 
         static int TheSmallestNum(int num1, int num2, int num3)
         {
-            int[] minValue = { num1, num2, num3 };
-            int min = minValue.Min();
-            return min;
+            int[] minValue = { num1, num2, num3 };           
+            return minValue.Min();
         }
     }
 }
