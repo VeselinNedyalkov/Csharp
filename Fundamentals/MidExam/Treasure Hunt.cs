@@ -35,26 +35,23 @@ namespace Treasure_Hunt
 
                     case "Steal":                       
                         int indexCount = int.Parse(cmd[1]);
-                        int endIndex = initialLoot.Count - 1 - indexCount;
-                        int k = 0;
+                        int endIndex = initialLoot.Count - 1 - indexCount;                       
                         List<string> stealItems = new List<string>();
+
                         if (endIndex >= 0)
                         {
                             for (int i = initialLoot.Count - 1 ; i > endIndex; i--)
                             {
                                 stealItems.Insert(0,initialLoot[i]);
                                 initialLoot.RemoveAt(i);
-                                k++;
                             }    
                         }
                         else
                         {
                             for (int i = initialLoot.Count - 1; i >= 0; i--)
                             {
-
                                 stealItems.Insert(0, initialLoot[i]);
                                 initialLoot.RemoveAt(i);
-                                k++;
                             }
                         }
                         Console.WriteLine(string.Join(", ", stealItems));
@@ -66,14 +63,13 @@ namespace Treasure_Hunt
                 cmd = Console.ReadLine().Split();
             }//while
 
-            double averageGain = 0;
             
-            if (initialLoot.Count == 0)
-            {
-                Console.WriteLine("Failed treasure hunt.");
-            }
+            
+            if (initialLoot.Count == 0)           
+                Console.WriteLine("Failed treasure hunt.");           
             else
             {
+                double averageGain = 0;
                 foreach (var item in initialLoot)
                 {
                     averageGain += item.Length;
