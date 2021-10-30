@@ -45,18 +45,20 @@ namespace VehicleCatalogue
 
             if (catalog.Cars.Count() != 0)
             {
+                List<Car> catalogUpdatedCar = catalog.Cars.OrderBy(x => x.Brand).ToList();
                 Console.WriteLine("Cars:");
-                foreach (var item in catalog.Cars)
+                foreach (var item in catalogUpdatedCar)
                 {
                     Console.WriteLine($"{item.Brand}: {item.Model} - {item.Hp}hp");
                 }
             }
             if (catalog.Trucks.Count() != 0)
             {
-                Console.WriteLine("Truck:");
+                List<Truck> catalogUpdatedTruck = catalog.Trucks.OrderBy(x => x.Brand).ToList(); 
+                Console.WriteLine("Trucks:");
                 foreach (var itemT in catalog.Trucks)
                 {
-                    Console.WriteLine($"{itemT.Brand}: {itemT.Model} - {itemT.Weight}hp");
+                    Console.WriteLine($"{itemT.Brand}: {itemT.Model} - {itemT.Weight}kg");
                 }
             }
          
