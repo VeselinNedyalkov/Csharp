@@ -23,7 +23,7 @@ namespace AssociativeArraysMoreExercise
                 inputContest = Console.ReadLine();
             }//adding contest and passwords 
 
-
+            //make new dictionary
             SortedDictionary<string, Dictionary<string,int>> candidates = new SortedDictionary<string, Dictionary<string, int>>();
 
             string input = Console.ReadLine();
@@ -35,14 +35,15 @@ namespace AssociativeArraysMoreExercise
                 string password = data[1];
                 string userName = data[2];
                 int points = int.Parse(data[3]);
-
+                //check if contest and password are true
                 if (contentPass.ContainsKey(contest))
                 {
                     if (contentPass[contest] == password)
                     {
+                        //check if userName is not existing add it
                         if (!candidates.ContainsKey(userName))
                             candidates.Add(userName, new Dictionary<string, int>());
-
+                        //if contest not existing add it with points if exist check for the points
                         if (!candidates[userName].ContainsKey(contest))
                             candidates[userName].Add(contest, points);
                         else if (candidates[userName][contest] < points)
@@ -57,7 +58,7 @@ namespace AssociativeArraysMoreExercise
 
             string name = string.Empty;
             int totalPoints = 0;
-
+            //faind the best points
             foreach (var topUser in candidates)
             {
                 int tempPoints = topUser.Value.Values.Sum();
@@ -67,6 +68,7 @@ namespace AssociativeArraysMoreExercise
                     name = topUser.Key.ToString();
                 }                   
             }
+            //print the result
             Console.WriteLine($"Best candidate is {name} with total {totalPoints} points.");
             Console.WriteLine("Ranking:");
             foreach (var user in candidates)
