@@ -13,10 +13,7 @@ namespace Ad_Astra
             const int CAL_PER_DAY = 2000;
 
             MatchCollection food = Regex.Matches(input, patern);
-
-            string product;
-            string date;
-            int calories;
+        
             int totalCalories = 0;
             int days = 0;
 
@@ -33,9 +30,9 @@ namespace Ad_Astra
             //print
             foreach (Match match in food)
             {
-                product = match.Groups["name"].Value;
-                date = match.Groups["expDate"].Value;
-                calories = int.Parse(match.Groups["calories"].Value);
+               string product = match.Groups["name"].Value;
+               string date = match.Groups["expDate"].Value;
+               int calories = int.Parse(match.Groups["calories"].Value);
                 Console.WriteLine($"Item: {product}, Best before: {date}, Nutrition: {calories}");
             }
         }
