@@ -29,15 +29,8 @@ namespace Speed_Racing
 
                 Cars currentCar = cars.Single(x => x.Model == carMode);
 
-                if (currentCar.IsFuelEnought(distance, currentCar.FuelPerKm, currentCar.Fuel))
-                {
-                    currentCar.Fuel -= distance * currentCar.FuelPerKm;
-                    currentCar.TravelDistance += distance;
-                }
-                else
-                {
-                    Console.WriteLine("Insufficient fuel for the drive");
-                }
+                currentCar.IsFuelEnought(currentCar, distance);
+               
             }
 
             foreach (var car in cars)
@@ -62,15 +55,17 @@ namespace Speed_Racing
             TravelDistance = distance;
         }
 
-        public bool IsFuelEnought(int distance, double fuelPerKm, double fuel)
-        {
-            bool canMove = false;
-            if ((distance * fuelPerKm) <= fuel)
-            {
-                canMove = true;
-            }
+        public void IsFuelEnought(Cars car,int distance)
+        {           
 
-            return canMove;
+            if ((car.FuelPerKm * distance) <= car.Fuel)
+            {
+                car.Fuel -= distance * car.FuelPerKm;
+                car.TravelDistance += distance;
+            }
+            else
+                Console.WriteLine("Insufficient fuel for the drive");
+
         }
     }
 }
