@@ -7,7 +7,7 @@ namespace PizzaCalories
         static void Main(string[] args)
         {
             string[] pizzaInfo = Console.ReadLine().Split();
-
+            //creat the pizza and check for Exception
             Pizza pizza;
             try
             {
@@ -20,7 +20,7 @@ namespace PizzaCalories
                 return;
             }
 
-
+            //creat the dought and check for Exception
             string[] doughtInfo = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
             Dough dough;
             try
@@ -34,6 +34,8 @@ namespace PizzaCalories
             }
             pizza.Dough = dough;
 
+            //creat the toping and add it to the pizza 
+            
             string cmd;
             while ((cmd = Console.ReadLine()) != "END")
             {
@@ -49,7 +51,7 @@ namespace PizzaCalories
                     Console.WriteLine(ex.Message);
                     return;
                 }
-
+                //if is more than 10 => Exception
                 try
                 {
                     pizza.Toppings = toping;
