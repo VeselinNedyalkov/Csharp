@@ -17,7 +17,7 @@ namespace PizzaCalories
             Backing = backing;
             Grams = grams;
         }
-
+        //check what type is the flour and give velue to calories
         public string Flour 
         {
             get => flourType.ToString();
@@ -38,6 +38,8 @@ namespace PizzaCalories
             }
                 
         }
+        //check what type is the backing and give velue to calories
+
         public string Backing 
         {
             get => backingTechnique.ToString();
@@ -61,6 +63,7 @@ namespace PizzaCalories
                 }
             } 
         }
+        //verified the grams
         public double Grams 
         { 
             get => grams;
@@ -76,7 +79,7 @@ namespace PizzaCalories
                 }
             }
         }
-
+        //calculate the calories
         public double CalculateCalories()
         {
             return (BaseCaloriesPerGram * grams) * backingTechnique * flourType;
