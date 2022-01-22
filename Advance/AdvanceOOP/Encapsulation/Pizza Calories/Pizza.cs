@@ -23,6 +23,7 @@ namespace PizzaCalories
                 dough = value;
             }
         }
+        //verified the name of the pizza NB can be " "
         public string Name
         {
             get => name;
@@ -35,6 +36,7 @@ namespace PizzaCalories
                 name = value;
             }
         }
+        //verified the topping
         public Topping Toppings
         {
             set
@@ -46,7 +48,7 @@ namespace PizzaCalories
                 toppings.Add(value);
             }
         }
-
+        //calculate Total Calories
         public double TotalCalories()
         {
             double totalCalories = dough.CalculateCalories();
