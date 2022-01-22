@@ -18,6 +18,7 @@ namespace PizzaCalories
             Grams = grams;
         }
 
+        //check what type is the input Product is and give value to the calories
         public string ProductCalories
         {
             get => productCalories.ToString();
@@ -47,6 +48,7 @@ namespace PizzaCalories
                 }
             }
         }
+        //verified the grams
         public double Grams 
         { 
             get => grams;
@@ -60,7 +62,7 @@ namespace PizzaCalories
             }
         }
 
-
+        //make a method that return double
         public double CalculateGramsTopping()
         {
             return BaseCaloriesPerGram * grams * productCalories;
