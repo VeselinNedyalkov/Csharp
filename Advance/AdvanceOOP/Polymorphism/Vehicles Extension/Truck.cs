@@ -19,10 +19,7 @@ namespace Vehicles
 
         public override void Refiling(double quantity)
         {
-            if (quantity + FuelQuntity > TankCapacity)
-            {
-                throw new ArgumentException($"Cannot fit {quantity} fuel in the tank");
-            }
+            ValidateQuantity(quantity);
             quantity *= 0.95;
             base.Refiling(quantity);
         }
