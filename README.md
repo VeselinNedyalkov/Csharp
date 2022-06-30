@@ -1,2 +1,2 @@
 # C sharp
-Home work from SoftUni
+Homework from SoftUni
