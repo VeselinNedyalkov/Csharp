@@ -22,7 +22,7 @@ namespace SoftUni
             StringBuilder sb = new StringBuilder();
 
             var answer = context.Employees
-                 .Where(e => e.Department.Name == "Research and Development ")
+                 .Where(e => e.Department.Name == "Research and Development")
                  .Select(e => new
                  {
                      e.FirstName,
