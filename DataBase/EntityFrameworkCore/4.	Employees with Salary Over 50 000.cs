@@ -12,12 +12,12 @@ namespace SoftUni
         {
             SoftUniContext dbContext = new SoftUniContext();
 
-            string answer = GetEmployeesFullInformation(dbContext);
+            string answer = GetEmployeesWithSalaryOver50000(dbContext);
 
             Console.WriteLine(answer);
         }
 
-        public static string GetEmployeesFullInformation(SoftUniContext context)
+        public static string GetEmployeesWithSalaryOver50000(SoftUniContext context)
         {
             StringBuilder sb = new StringBuilder();
 
