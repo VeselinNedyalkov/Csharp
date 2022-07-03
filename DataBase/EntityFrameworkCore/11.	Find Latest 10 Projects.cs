@@ -23,7 +23,7 @@ namespace SoftUni
             StringBuilder sb = new StringBuilder();
 
             var projects = context.Projects
-                .OrderBy(p => p.Name)
+                .OrderByDescending(p => p.StartDate)
                 .Take(10)
                 .Select(p => new
                 {
@@ -31,13 +31,12 @@ namespace SoftUni
                     Descroption = p.Description,
                     StartDate = p.StartDate.ToString("M/d/yyyy h:mm:ss tt"),
                 })
+                .OrderBy(p => p.Name)
                 .ToArray();
 
             foreach (var d in projects)
             {
-                sb.AppendLine(d.Name);
-                sb.AppendLine(d.Descroption);
-                sb.AppendLine(d.StartDate);
+                sb.AppendLine($"{d.Name}\n{d.Descroption}\n{d.StartDate}");
             }   
                return sb.ToString().TrimEnd();
         }
