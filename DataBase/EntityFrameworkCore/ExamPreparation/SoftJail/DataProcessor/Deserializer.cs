@@ -12,6 +12,7 @@
     using SoftJail.Data.Models;
     using System.Xml.Linq;
     using System.Globalization;
+    using SoftJail.Data.Models.Enums;
 
     public class Deserializer
     {
@@ -109,8 +110,40 @@
         public static string ImportOfficersPrisoners(SoftJailDbContext context, string xmlString)
         {
             StringBuilder sb = new StringBuilder();
+            List<Officer> officerToInput = new List<Officer>();
 
             var officersImport = XmlConverter
+                .Deserializer<OfficersPrisonersInputModel>(xmlString, "Officers");
+
+            foreach (var officer in officersImport)
+            {
+                if (!IsValid(officer))
+                {
+                    sb.AppendLine("Invalid Data");
+                    continue;
+                }
+
+                var curectOfficer = new Officer
+                {
+                    FullName = officer.Fullname,
+                    Salary = officer.Salary,
+                    DepartmentId = officer.DepartmentId,
+                    Position = Enum.Parse<Position>(officer.Position),
+                    Weapon = Enum.Parse<Weapon>(officer.Weapon),
+                    OfficerPrisoners = officer.Prisoners.Select(x => new OfficerPrisoner
+                    {
+                        PrisonerId = x.Id,
+                    })
+                    .ToList(),
+                };
+                officerToInput.Add(curectOfficer);
+                sb.AppendLine($"Imported {curectOfficer.FullName} ({curectOfficer.OfficerPrisoners.Count} prisoners)");
+            }
+
+            context.Officers.AddRange(officerToInput);
+            context.SaveChanges();
+
+            return sb.ToString().TrimEnd();
         }
 
         private static bool IsValid(object obj)

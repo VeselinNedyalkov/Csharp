@@ -4,8 +4,6 @@ using System.Xml.Serialization;
 
 namespace SoftJail.DataProcessor
 {
-   
-
     public static class XmlConverter
     {
         public static string Serialize<T>(

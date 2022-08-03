@@ -1,35 +1,32 @@
 ﻿using SoftJail.Data.Models.Enums;
-using SoftJail.Data.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.ComponentModel.DataAnnotations;
 
 namespace SoftJail.DataProcessor.ImportDto
 {
-    [XmlType("Officers")]
+    [XmlType("Officer")]
     public class OfficersPrisonersInputModel
     {
-       
-
         [XmlElement("Name")]
         [Required]
         [StringLength(30, MinimumLength = 3)]
-        public string Name { get; set; }
+        
+        public string Fullname { get; set; }
 
         [XmlElement("Money")]
         [Range(typeof(decimal), "0", "79228162514264337593543950335")]
-        public decimal Money { get; set; }
+        public decimal Salary { get; set; }
 
         [XmlElement("Position")]
         [EnumDataType(typeof(Position))]
-        public Position Position { get; set; }
+        [Required]
+        public string Position { get; set; }
 
         [XmlElement("Weapon")]
         [EnumDataType(typeof(Weapon))]
-        public Weapon Weapon { get; set; }
+        [Required]
+        public string Weapon { get; set; }
 
         [XmlElement("DepartmentId")]
         public int DepartmentId { get; set; }
